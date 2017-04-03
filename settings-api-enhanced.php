@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
  * Enqueues the stylesheet with the new forms.css styles.
  */
 function sae_enqueue_forms_css() {
-	wp_enqueue_style( 'sae-forms', plugin_dir_url( __FILE__ ) . 'wp-admin/css/forms.css' );
+	wp_enqueue_style( 'sae-forms', plugin_dir_url( __FILE__ ) . 'wp-admin/css/forms.css', array( 'forms' ) );
 }
 
 /**
