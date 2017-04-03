@@ -18,7 +18,7 @@ See the [Core Trac ticket](https://core.trac.wordpress.org/ticket/39441) for mor
 
 To test the new layout and markup, visit the Settings > General page in the admin. This is the only page that is currently modified for testing.
 
-(The new layout is not actually implemented yet. The plugin uses new accessible markup and CSS classes, but the styles for these classes currently replicate the existing Core layout, to provide a backward-compatible base to iterate from.)
+(The new layout is not actually implemented yet. The plugin uses new accessible markup and CSS classes, but the styles for these classes currently replicate the existing Core layout, to provide a backward-compatible base to iterate from. Furthermore the layout appears broken at the moment, since fieldset styled as tables are buggy. We do not need to fix that though, since we are going to move away from that layout anyway.)
 
 ### Testing the enhanced Settings API
 
