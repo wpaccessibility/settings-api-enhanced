@@ -1,0 +1,259 @@
+/*
+This file is currently an exact representation of the Core markup.
+However it is using the new classes instead of the Core table classes.
+These styles can therefore be used as a starting point to move from the
+old two-column layout to a modern one-column layout.
+ */
+
+@-moz-document url-prefix() {
+	.settings-fields input.tog {
+		margin-bottom: -1px;
+	}
+}
+
+.settings-fields .form-required.form-invalid .settings-field-control:after {
+	content: "\f534";
+	font: normal 20px/1 dashicons;
+	color: #dc3232;
+	margin-left: -25px;
+	vertical-align: middle;
+}
+
+.settings-fields .form-required.user-pass1-wrap.form-invalid .settings-field-control:after {
+	content: '';
+}
+
+.settings-fields .form-required.user-pass1-wrap.form-invalid .password-input-wrapper:after {
+	content: '\f534';
+	font: normal 20px/1 dashicons;
+	color: #dc3232;
+	margin: 0 6px 0 -29px;
+	vertical-align: middle;
+}
+
+.settings-fields + p.submit,
+.settings-fields + input + p.submit,
+.settings-fields + input + input + p.submit {
+	border-top: none;
+	padding-top: 0;
+}
+
+.settings-fields span.description.important {
+	font-size: 12px;
+}
+
+.settings-fields {
+	display: table;
+	border-collapse: collapse;
+	margin-top: 0.5em;
+	width: 100%;
+	clear: both;
+}
+
+.settings-fields .settings-field {
+	display: table-row;
+}
+
+.settings-fields,
+.settings-fields .settings-field-control,
+.settings-fields .settings-field-title,
+.settings-fields .settings-field-control p {
+	font-size: 14px;
+}
+
+.settings-fields .settings-field-control {
+	display: table-cell;
+	margin-bottom: 9px;
+	padding: 15px 10px;
+	line-height: 1.3;
+	vertical-align: middle;
+}
+
+.settings-fields .settings-field-title {
+	color: #23282d;
+	font-weight: 400;
+	text-shadow: none;
+	vertical-align: baseline;
+	display: table-cell;
+	vertical-align: top;
+	text-align: left;
+	padding: 20px 10px 20px 0;
+	width: 200px;
+	line-height: 1.3;
+	font-weight: 600;
+}
+
+.settings-fields .settings-field-title.th-full {
+	width: auto;
+	font-weight: 400;
+}
+
+.settings-fields .settings-field-control p {
+	margin-top: 4px;
+	margin-bottom: 0;
+}
+
+.settings-fields .settings-field-control .title-label {
+	font-weight: 600;
+}
+
+.settings-fields .date-time-doc {
+	margin-top: 1em;
+}
+
+.settings-fields p.timezone-info {
+	margin: 1em 0;
+}
+
+.settings-fields .settings-field-control .radio-item,
+.settings-fields .settings-field-control .multibox-item {
+	margin: 0.25em 0 0.5em !important;
+	display: inline-block;
+}
+
+.settings-fields .settings-field-control .radio-item,
+.settings-fields .settings-field-control .multibox-item {
+	line-height: 1.4em;
+}
+
+.settings-fields input.tog,
+.settings-fields input[type="radio"] {
+	margin-top: -4px;
+	margin-right: 4px;
+	float: none;
+}
+
+.settings-fields .pre {
+	padding: 8px;
+	margin: 0;
+}
+
+.settings-fields .settings-field-control .updated {
+	font-size: 13px;
+}
+
+.settings-fields .settings-field-control .updated p {
+	font-size: 13px;
+	margin: 0.3em 0;
+}
+
+#profile-page .settings-fields textarea {
+	width: 500px;
+	margin-bottom: 6px;
+}
+
+#profile-page .settings-fields #rich_editing {
+	margin-right: 5px
+}
+
+@media screen and ( max-width: 782px ) {
+	.settings-fields {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.settings-field {
+		display: block;
+	}
+
+	.settings-fields .settings-field-title,
+	.settings-fields .settings-field-control {
+		display: block;
+		width: auto;
+		vertical-align: middle;
+	}
+
+	.settings-fields .color-palette td {
+		display: table-cell;
+		width: 15px;
+	}
+
+	.settings-fields table.color-palette {
+		margin-right: 10px;
+	}
+
+	.settings-fields .settings-field-control input[type="text"],
+	.settings-fields .settings-field-control input[type="email"],
+	.settings-fields .settings-field-control input[type="password"],
+	.settings-fields .settings-field-control select,
+	.settings-fields .settings-field-control textarea,
+	.settings-fields span.description,
+	#profile-page .settings-fields textarea {
+		width: 100%;
+		font-size: 16px;
+		line-height: 1.5;
+		padding: 7px 10px;
+		display: block;
+		max-width: none;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.settings-fields .form-required.form-invalid .settings-field-control:after {
+		float: right;
+		margin: -30px 3px 0 0;
+	}
+
+	#wpbody .settings-fields .settings-field-control select {
+		height: 40px;
+	}
+
+	.settings-fields input[type="text"].small-text {
+		width: auto;
+		max-width: 55px;
+		display: inline;
+		padding: 3px 6px;
+		margin: 0 3px;
+	}
+
+	.settings-fields span.description {
+		display: inline;
+		padding: 4px 0 0;
+		line-height: 1.4em;
+		font-size: 14px;
+	}
+
+	.settings-fields .settings-field-title {
+		padding-top: 10px;
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+
+	.settings-fields .settings-field-control {
+		margin-bottom: 0;
+		padding-bottom: 6px;
+		padding-top: 4px;
+		padding-left: 0;
+	}
+
+	.settings-fields.permalink-structure .settings-field-control code {
+		margin-left: 32px;
+	}
+
+	.settings-fields.permalink-structure .settings-field-control input[type="text"] {
+		margin-left: 32px;
+		margin-top: 4px;
+		width: 96%;
+	}
+
+	.settings-fields input.regular-text {
+		width: 100%;
+	}
+
+	.settings-fields label {
+		font-size: 14px;
+	}
+
+	.settings-fields fieldset label {
+		display: block;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#profile-page .settings-fields textarea {
+		max-width: 400px;
+		width: auto;
+	}
+}
