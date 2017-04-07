@@ -43,15 +43,10 @@ old two-column layout to a modern one-column layout.
 }
 
 .settings-fields {
-	display: table;
 	border-collapse: collapse;
 	margin-top: 0.5em;
-	width: 100%;
+	max-width: 780px;
 	clear: both;
-}
-
-.settings-fields .settings-field {
-	display: table-row;
 }
 
 .settings-fields,
@@ -62,9 +57,9 @@ old two-column layout to a modern one-column layout.
 }
 
 .settings-fields .settings-field-control {
-	display: table-cell;
+	display: block;
 	margin-bottom: 9px;
-	padding: 15px 10px;
+	padding: 5px 0;
 	line-height: 1.3;
 	vertical-align: middle;
 }
@@ -74,13 +69,19 @@ old two-column layout to a modern one-column layout.
 	font-weight: 400;
 	text-shadow: none;
 	vertical-align: baseline;
-	display: table-cell;
 	vertical-align: top;
 	text-align: left;
-	padding: 20px 10px 20px 0;
-	width: 200px;
+	padding: 5px 10px 10px 0;
 	line-height: 1.3;
 	font-weight: 600;
+}
+
+.settings-fields .settings-field{
+	padding: 10px 0 0 0;
+}
+
+.settings-fields .settings-field.settings-field-space{
+	padding: 0 0 40px;
 }
 
 .settings-fields .settings-field-title.th-full {
@@ -165,7 +166,6 @@ old two-column layout to a modern one-column layout.
 	}
 
 	.settings-fields .color-palette td {
-		display: table-cell;
 		width: 15px;
 	}
 
