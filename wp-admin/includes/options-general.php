@@ -44,7 +44,9 @@ function add_settings_fields_options_general() {
 			'description' => __( 'This address is used for admin purposes, like new user notification.' ),
 		) );
 
-		sae_add_settings_field( 'users_can_register', __( 'Anyone can register' ), 'checkbox', 'general', 'default' );
+		sae_add_settings_field( 'users_can_register', __( 'Membership' ), 'checkbox', 'general', 'default', array(
+			'label' => __( 'Anyone can register' ),
+		) );
 
 		sae_add_settings_field( 'default_role', __( 'New User Default Role' ), 'render_settings_field_roles_dropdown', 'general', 'default', array(
 			'class' => 'settings-field-space',

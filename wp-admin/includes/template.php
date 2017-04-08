@@ -136,8 +136,8 @@ function sae_add_settings_field($id, $title, $callback, $page, $section = 'defau
 			$callback = 'render_settings_field_textarea';
 			break;
 		case 'checkbox':
-			$args['label'] = $title;
-			$args['skip_title'] = true;
+			$defaults['label'] = $title;
+			$defaults['skip_title_screen_reader'] = true;
 			$callback = 'render_settings_field_checkbox';
 			break;
 		case 'select':
@@ -241,6 +241,8 @@ function sae_do_settings_fields($page, $section) {
 
 			if ( ! empty( $field['args']['fieldset'] ) ) {
 				echo '<legend class="' . esc_attr( $label_class ) . '">' . $field['title'] . '</legend>';
+			} elseif ( ! empty( $field['args']['skip_title_screen_reader'] ) ) {
+				echo '<span class="' . esc_attr( $label_class ) . '" aria-hidden="true">' . $field['title'] . '</span>';
 			} elseif ( ! empty( $field['args']['label_for'] ) ) {
 				echo '<label for="' . esc_attr( $field['args']['label_for'] ) . '" class="' . esc_attr( $label_class ) . '">' . $field['title'] . '</label>';
 			} else {
