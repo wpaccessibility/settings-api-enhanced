@@ -87,6 +87,14 @@ old two-column layout to a modern one-column layout.
 	padding: 0 0 40px;
 }
 
+.settings-fields .settings-field{
+	padding: 10px 0 0 0;
+}
+
+.settings-fields .settings-field.settings-field-space{
+	padding: 0 0 40px;
+}
+
 .settings-fields .settings-field-title.th-full {
 	width: auto;
 	font-weight: 400;
@@ -111,13 +119,9 @@ old two-column layout to a modern one-column layout.
 
 .settings-fields .settings-field-control .radio-item,
 .settings-fields .settings-field-control .multibox-item {
-	margin: 0.25em 0 0.5em !important;
 	display: inline-block;
-}
-
-.settings-fields .settings-field-control .radio-item,
-.settings-fields .settings-field-control .multibox-item {
 	line-height: 1.4em;
+	margin: 0.25em 0 0.5em !important;
 }
 
 .settings-fields input[type="checkbox"]{
