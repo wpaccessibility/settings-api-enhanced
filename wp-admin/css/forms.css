@@ -38,13 +38,17 @@ old two-column layout to a modern one-column layout.
 	padding-top: 0;
 }
 
+.settings-fields input, select, textarea{
+	font-size: 16px;
+}
+
 .settings-fields span.description.important {
 	font-size: 12px;
 }
 
 .settings-fields {
 	border-collapse: collapse;
-	margin-top: 0.5em;
+	margin-top: 20px;
 	max-width: 780px;
 	clear: both;
 }
@@ -53,7 +57,7 @@ old two-column layout to a modern one-column layout.
 .settings-fields .settings-field-control,
 .settings-fields .settings-field-title,
 .settings-fields .settings-field-control p {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .settings-fields .settings-field-control {
@@ -66,14 +70,21 @@ old two-column layout to a modern one-column layout.
 
 .settings-fields .settings-field-title {
 	color: #23282d;
-	font-weight: 400;
 	text-shadow: none;
 	vertical-align: baseline;
 	vertical-align: top;
 	text-align: left;
 	padding: 5px 10px 10px 0;
 	line-height: 1.3;
-	font-weight: 600;
+	font-weight: 400;
+}
+
+.settings-fields .settings-field{
+	padding: 10px 0 0 0;
+}
+
+.settings-fields .settings-field.settings-field-space{
+	padding: 0 0 40px;
 }
 
 .settings-fields .settings-field{
@@ -108,19 +119,18 @@ old two-column layout to a modern one-column layout.
 
 .settings-fields .settings-field-control .radio-item,
 .settings-fields .settings-field-control .multibox-item {
-	margin: 0.25em 0 0.5em !important;
 	display: inline-block;
+	line-height: 1.4em;
+	margin: 0.25em 0 0.5em !important;
 }
 
-.settings-fields .settings-field-control .radio-item,
-.settings-fields .settings-field-control .multibox-item {
-	line-height: 1.4em;
+.settings-fields input[type="checkbox"]{
+	margin: 0px 4px 0 0;
 }
 
 .settings-fields input.tog,
 .settings-fields input[type="radio"] {
-	margin-top: -4px;
-	margin-right: 4px;
+	margin: 0px 4px 0 0;
 	float: none;
 }
 
