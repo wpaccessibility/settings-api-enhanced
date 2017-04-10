@@ -23,7 +23,10 @@ function sae_enqueue_forms_css() {
  * Replaces the Settings > General screen with the plugin variant.
  */
 function sae_replace_options_general() {
-	global $title, $parent_file, $timezone_format;
+	global $title, $parent_file, $submenu_file, $timezone_format;
+
+	// Ensure submenu item is highlighted correctly.
+	$submenu_file = 'options-general.php';
 
 	require_once SAE_ABSPATH . 'wp-admin/options-general.php';
 
