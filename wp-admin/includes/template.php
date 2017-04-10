@@ -186,19 +186,27 @@ function sae_do_settings_sections( $page ) {
 	if ( ! isset( $wp_settings_sections[$page] ) )
 		return;
 
+	echo '<div class="settings-sections">';
+
 	foreach ( (array) $wp_settings_sections[$page] as $section ) {
+		echo '<div class="settings-section">';
+
 		if ( $section['title'] )
 			echo "<h2>{$section['title']}</h2>\n";
 
 		if ( $section['callback'] )
 			call_user_func( $section['callback'], $section );
 
-		if ( ! isset( $wp_settings_fields ) || !isset( $wp_settings_fields[$page] ) || !isset( $wp_settings_fields[$page][$section['id']] ) )
-			continue;
-		echo '<div class="settings-fields">';
-		sae_do_settings_fields( $page, $section['id'] );
+		if ( isset( $wp_settings_fields ) && isset( $wp_settings_fields[ $page ] ) && isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
+			echo '<div class="settings-fields">';
+			sae_do_settings_fields( $page, $section['id'] );
+			echo '</div>';
+		}
+
 		echo '</div>';
 	}
+
+	echo '</div>';
 }
 
 /**

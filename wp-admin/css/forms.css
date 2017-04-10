@@ -11,6 +11,14 @@ old two-column layout to a modern one-column layout.
 	}
 }
 
+.settings-section {
+	margin: 0 0 40px;
+}
+
+.settings-section:last-child {
+	margin: 0;
+}
+
 .settings-fields .form-required.form-invalid .settings-field-control:after {
 	content: "\f534";
 	font: normal 20px/1 dashicons;
@@ -83,16 +91,8 @@ old two-column layout to a modern one-column layout.
 	padding: 10px 0 0 0;
 }
 
-.settings-fields .settings-field.settings-field-space{
-	padding: 0 0 40px;
-}
-
 .settings-fields .settings-field{
 	padding: 10px 0 0 0;
-}
-
-.settings-fields .settings-field.settings-field-space{
-	padding: 0 0 40px;
 }
 
 .settings-fields .settings-field-title.th-full {

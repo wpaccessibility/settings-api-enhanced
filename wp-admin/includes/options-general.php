@@ -13,46 +13,51 @@
  * @since 4.8.0
  */
 function add_settings_fields_options_general() {
-	sae_add_settings_field( 'blogname', __( 'Site Title' ), 'text', 'general', 'default', array(
+	sae_add_settings_section( 'site_identity', '', null, 'general' );
+
+	sae_add_settings_field( 'blogname', __( 'Site Title' ), 'text', 'general', 'site_identity', array(
 		'input_class' => 'regular-text',
 	) );
 
-	sae_add_settings_field( 'blogdescription', __( 'Tagline' ), 'text', 'general', 'default', array(
-		'class' => 'settings-field-space',
+	sae_add_settings_field( 'blogdescription', __( 'Tagline' ), 'text', 'general', 'site_identity', array(
 		'input_class'    => 'regular-text',
 		'description_id' => 'tagline-description',
 		'description'    => __( 'In a few words, explain what this site is about.' ),
 	) );
 
 	if ( ! is_multisite() ) {
-		sae_add_settings_field( 'siteurl', __( 'WordPress Address (URL)' ), 'url', 'general', 'default', array(
+		sae_add_settings_section( 'site_urls', '', null, 'general' );
+
+		sae_add_settings_field( 'siteurl', __( 'WordPress Address (URL)' ), 'url', 'general', 'site_urls', array(
 			'input_class' => 'regular-text code' . ( defined( 'WP_SITEURL' ) ? ' disabled' : '' ),
 			'disabled'    => defined( 'WP_SITEURL' ) ? true : false,
 		) );
 
-		sae_add_settings_field( 'home', __( 'Site Address (URL)' ), 'url', 'general', 'default', array(
-			'class' => 'settings-field-space',
+		sae_add_settings_field( 'home', __( 'Site Address (URL)' ), 'url', 'general', 'site_urls', array(
 			'input_class' => 'regular-text code' . ( defined( 'WP_HOME' ) ? ' disabled' : '' ),
 			'disabled'    => defined( 'WP_HOME' ) ? true : false,
 			'description' => __( 'Enter the address here if you <a href="https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory">want your site home page to be different from your WordPress installation directory.</a>' ),
 		) );
 
-		sae_add_settings_field( 'admin_email', __( 'Email Address' ), 'email', 'general', 'default', array(
-			'class' => 'settings-field-space',
+		sae_add_settings_section( 'email', '', null, 'general' );
+
+		sae_add_settings_field( 'admin_email', __( 'Email Address' ), 'email', 'general', 'email', array(
 			'input_id'    => 'admin-email',
 			'input_class' => 'regular-text ltr',
 			'description' => __( 'This address is used for admin purposes, like new user notification.' ),
 		) );
 
-		sae_add_settings_field( 'users_can_register', __( 'Membership' ), 'checkbox', 'general', 'default', array(
+		sae_add_settings_section( 'users', '', null, 'general' );
+
+		sae_add_settings_field( 'users_can_register', __( 'Membership' ), 'checkbox', 'general', 'users', array(
 			'label' => __( 'Anyone can register' ),
 		) );
 
-		sae_add_settings_field( 'default_role', __( 'New User Default Role' ), 'render_settings_field_roles_dropdown', 'general', 'default', array(
-			'class' => 'settings-field-space',
-		) );
+		sae_add_settings_field( 'default_role', __( 'New User Default Role' ), 'render_settings_field_roles_dropdown', 'general', 'users' );
 	} else {
-		sae_add_settings_field( 'admin_email', __( 'Email Address' ), 'email', 'general', 'default', array(
+		sae_add_settings_section( 'email', '', null, 'general' );
+
+		sae_add_settings_field( 'admin_email', __( 'Email Address' ), 'email', 'general', 'email', array(
 			'input_id'       => 'new_admin_email',
 			'input_name'     => 'new_admin_email',
 			'input_class'    => 'regular-text ltr',
@@ -63,34 +68,32 @@ function add_settings_fields_options_general() {
 		) );
 	}
 
+	sae_add_settings_section( 'locale', '', null, 'general' );
+
 	$languages = get_available_languages();
 	$translations = wp_get_available_translations();
 	if ( ! is_multisite() && defined( 'WPLANG' ) && '' !== WPLANG && 'en_US' !== WPLANG && ! in_array( WPLANG, $languages ) ) {
 		$languages[] = WPLANG;
 	}
 	if ( ! empty( $languages ) || ! empty( $translations ) ) {
-		sae_add_settings_field( 'WPLANG', __( 'Site Language' ), 'render_settings_field_languages_dropdown', 'general', 'default', array(
-			'class' => 'settings-field-space',
+		sae_add_settings_field( 'WPLANG', __( 'Site Language' ), 'render_settings_field_languages_dropdown', 'general', 'locale', array(
 			'languages'    => $languages,
 			'translations' => $translations,
 			'after'        => 'settings_field_wplang_after',
 		) );
 	}
 
-	sae_add_settings_field( 'timezone_string', __( 'Timezone' ), 'render_settings_field_timezones_dropdown', 'general', 'default', array(
-		'class' => 'settings-field-space',
+	sae_add_settings_field( 'timezone_string', __( 'Timezone' ), 'render_settings_field_timezones_dropdown', 'general', 'locale', array(
 		'description_id' => 'timezone-description',
 		'description'    => __( 'Choose either a city in the same timezone as you or a UTC timezone offset.' ),
 	) );
 
-	sae_add_settings_field( 'date_format', __( 'Date Format' ), 'render_settings_field_datetime_format_radio', 'general', 'default', array(
-		'class' => 'settings-field-space',
+	sae_add_settings_field( 'date_format', __( 'Date Format' ), 'render_settings_field_datetime_format_radio', 'general', 'locale', array(
 		'mode'     => 'date_format',
 		'fieldset' => true,
 	) );
 
-	sae_add_settings_field( 'time_format', __( 'Time Format' ), 'render_settings_field_datetime_format_radio', 'general', 'default', array(
-		'class' => 'settings-field-space',
+	sae_add_settings_field( 'time_format', __( 'Time Format' ), 'render_settings_field_datetime_format_radio', 'general', 'locale', array(
 		'mode'     => 'time_format',
 		'fieldset' => true,
 		'after'    => 'settings_field_time_format_after',
@@ -106,7 +109,7 @@ function add_settings_fields_options_general() {
 		$start_of_week_choices[ $day_index ] = $wp_locale->get_weekday( $day_index );
 	}
 
-	sae_add_settings_field( 'start_of_week', __( 'Week Starts On' ), 'select', 'general', 'default', array(
+	sae_add_settings_field( 'start_of_week', __( 'Week Starts On' ), 'select', 'general', 'locale', array(
 		'choices'        => $start_of_week_choices,
 	) );
 }

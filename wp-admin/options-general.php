@@ -60,10 +60,6 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <form method="post" action="options.php" novalidate="novalidate">
 <?php settings_fields('general'); ?>
 
-<div class="settings-fields">
-<?php sae_do_settings_fields( 'general', 'default' ); ?>
-</div>
-
 <?php sae_do_settings_sections( 'general' ); ?>
 
 <?php submit_button(); ?>
