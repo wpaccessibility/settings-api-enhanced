@@ -21,19 +21,19 @@ old two-column layout to a modern one-column layout.
 
 .settings-fields .form-required.form-invalid .settings-field-control:after {
 	content: "\f534";
-	font: normal 20px/1 dashicons;
+	font: 400 20px/1 dashicons;
 	color: #dc3232;
 	margin-left: -25px;
 	vertical-align: middle;
 }
 
 .settings-fields .form-required.user-pass1-wrap.form-invalid .settings-field-control:after {
-	content: '';
+	content: "";
 }
 
 .settings-fields .form-required.user-pass1-wrap.form-invalid .password-input-wrapper:after {
-	content: '\f534';
-	font: normal 20px/1 dashicons;
+	content: "\f534";
+	font: 400 20px/1 dashicons;
 	color: #dc3232;
 	margin: 0 6px 0 -29px;
 	vertical-align: middle;
@@ -46,7 +46,9 @@ old two-column layout to a modern one-column layout.
 	padding-top: 0;
 }
 
-.settings-fields input, select, textarea{
+.settings-fields input,
+select,
+textarea {
 	font-size: 16px;
 }
 
@@ -87,12 +89,12 @@ old two-column layout to a modern one-column layout.
 	font-weight: 400;
 }
 
-.settings-fields .settings-field{
-	padding: 10px 0 0 0;
+.settings-fields .settings-field {
+	padding: 10px 0 0;
 }
 
-.settings-fields .settings-field{
-	padding: 10px 0 0 0;
+.settings-fields .settings-field {
+	padding: 10px 0 0;
 }
 
 .settings-fields .settings-field-title.th-full {
@@ -124,13 +126,13 @@ old two-column layout to a modern one-column layout.
 	margin: 0.25em 0 0.5em !important;
 }
 
-.settings-fields input[type="checkbox"]{
-	margin: 0px 4px 0 0;
+.settings-fields input[type="checkbox"] {
+	margin: 0 4px 0 0;
 }
 
 .settings-fields input.tog,
 .settings-fields input[type="radio"] {
-	margin: 0px 4px 0 0;
+	margin: 0 4px 0 0;
 	float: none;
 }
 
@@ -154,7 +156,7 @@ old two-column layout to a modern one-column layout.
 }
 
 #profile-page .settings-fields #rich_editing {
-	margin-right: 5px
+	margin-right: 5px;
 }
 
 @media screen and ( max-width: 782px ) {
