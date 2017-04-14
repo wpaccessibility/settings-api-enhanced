@@ -103,14 +103,16 @@ function add_settings_fields_options_general() {
 	) );
 
 	sae_add_settings_field( 'date_format', __( 'Date Format' ), 'render_settings_field_datetime_format_radio', 'general', 'locale', array(
-		'mode'     => 'date_format',
-		'fieldset' => true,
+		'mode'        => 'date_format',
+		'fieldset'    => true,
+		'input_class' => 'js-date-time-format',
 	) );
 
 	sae_add_settings_field( 'time_format', __( 'Time Format' ), 'render_settings_field_datetime_format_radio', 'general', 'locale', array(
-		'mode'     => 'time_format',
-		'fieldset' => true,
-		'after'    => 'settings_field_time_format_after',
+		'mode'        => 'time_format',
+		'fieldset'    => true,
+		'after'       => 'settings_field_time_format_after',
+		'input_class' => 'js-date-time-format',
 	) );
 
 	/**
@@ -391,6 +393,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 
 	$radio_attrs = $input_attrs;
 	$radio_attrs['id'] = $radio_attrs['name'] . '_custom_radio';
+	$radio_attrs['class'] = 'js-date-time-custom-format-radio';
 	$radio_attrs['value'] = '\c\u\s\t\o\m';
 
 	echo '<span class="radio-item">';
@@ -403,7 +406,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 		'type'             => 'text',
 		'id'               => $radio_attrs['name'] . '_custom',
 		'name'             => $radio_attrs['name'] . '_custom',
-		'class'            => 'small-text',
+		'class'            => 'small-text js-date-time-custom-format-input',
 		'value'            => $current,
 		'aria-describedby' => $description_id,
 	);
