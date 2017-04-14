@@ -411,7 +411,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 	echo '<span class="radio-item">';
 	echo '<label for="' . esc_attr( $text_attrs['id'] ) . '">' . $custom_label . '</label>';
 	echo ' <input' . attrs( $text_attrs, false ) . ' />';
-	echo ' <span class="description" id="' . $description_id . '">' . __( 'Example:' ) . ' <span class="example">' . date_i18n( $current ) . '</span><span class="spinner"></span></span>';
+	echo ' <span class="description" id="' . $description_id . '">' . __( 'Example:' ) . ' <span class="example">' . date_i18n( $current ) . '</span><span class="spinner js-date-time-custom-spinner"></span></span>';
 	echo '</span>';
 }
 
