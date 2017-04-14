@@ -42,7 +42,7 @@ function sae_options_general_add_js() {
 			}
 		});
 
-		$( 'input[name="date_format_custom"]' ).focus( function() {
+		$( 'input[name="date_format_custom"]' ).on( 'click input', function() {
 			$( '#date_format_custom_radio' ).prop( 'checked', true );
 		});
 
@@ -56,7 +56,7 @@ function sae_options_general_add_js() {
 			}
 		});
 
-		$( 'input[name="time_format_custom"]' ).focus( function() {
+		$( 'input[name="time_format_custom"]' ).on( 'click input', function() {
 			$( '#time_format_custom_radio' ).prop( 'checked', true );
 		});
 
