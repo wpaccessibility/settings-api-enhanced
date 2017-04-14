@@ -183,30 +183,27 @@ function sae_add_settings_field($id, $title, $callback, $page, $section = 'defau
 function sae_do_settings_sections( $page ) {
 	global $wp_settings_sections, $wp_settings_fields;
 
-	if ( ! isset( $wp_settings_sections[$page] ) )
+	if ( ! isset( $wp_settings_sections[$page] ) ) {
 		return;
-
-	echo '<div class="settings-sections">';
+	}
 
 	foreach ( (array) $wp_settings_sections[$page] as $section ) {
-		echo '<div class="settings-section">';
+		echo '<div class="section">';
 
-		if ( $section['title'] )
+		if ( $section['title'] ) {
 			echo "<h2>{$section['title']}</h2>\n";
+		}
 
-		if ( $section['callback'] )
+		if ( $section['callback'] ) {
 			call_user_func( $section['callback'], $section );
+		}
 
 		if ( isset( $wp_settings_fields ) && isset( $wp_settings_fields[ $page ] ) && isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
-			echo '<div class="settings-fields">';
 			sae_do_settings_fields( $page, $section['id'] );
-			echo '</div>';
 		}
 
 		echo '</div>';
 	}
-
-	echo '</div>';
 }
 
 /**
@@ -230,7 +227,7 @@ function sae_do_settings_fields($page, $section) {
 		return;
 
 	foreach ( (array) $wp_settings_fields[$page][$section] as $field ) {
-		$class = 'settings-field';
+		$class = 'setting';
 
 		if ( ! empty( $field['args']['class'] ) ) {
 			$class .= ' ' . $field['args']['class'];
@@ -241,7 +238,7 @@ function sae_do_settings_fields($page, $section) {
 		echo '<' . $wrap . ' class="' . esc_attr( $class ) . '">';
 
 		if ( empty( $field['args']['skip_title'] ) ) {
-			$label_class = 'settings-field-title';
+			$label_class = 'field-title';
 
 			if ( ! empty( $field['args']['label_class'] ) ) {
 				$label_class .= ' ' . $field['args']['label_class'];
@@ -258,7 +255,7 @@ function sae_do_settings_fields($page, $section) {
 			}
 		}
 
-		echo '<span class="settings-field-control">';
+		echo '<span class="control">';
 
 		// Duplicate arguments to not modify globals permanently.
 		$field_args = $field['args'];
@@ -561,7 +558,7 @@ function render_settings_field_radio( $field_args ) {
 
 		echo '<span class="radio-item">';
 		echo '<input' . attrs( $radio_attrs, false ) . checked( $current, $value, false ) . ' />';
-		echo ' <label for="' . $radio_attrs['id'] . '">' . $label . '</label>';
+		echo ' <label for="' . $radio_attrs['id'] . '" class="title-label">' . $label . '</label>';
 		echo '</span><br />';
 	}
 

@@ -7,6 +7,20 @@
  * @since 4.8.0
  */
 
+add_filter( 'admin_body_class', 'wp_settings_body_class' );
+
+/**
+ * Add a CSS class on the settings pages body element.
+ *
+ * @since 4.8.0
+ *
+ * @param string $classes
+ * @return string
+ */
+function wp_settings_body_class( $classes ) {
+	return "$classes settings";
+}
+
 /**
  * Adds default settings fields for the General Settings page.
  *
@@ -371,7 +385,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 
 		echo '<span class="radio-item">';
 		echo '<input' . attrs( $radio_attrs, false ) . checked( $current, $value, false ) . ' />';
-		echo ' <label for="' . $radio_attrs['id'] . '"><span class="date-time-text format-i18n">' . date_i18n( $value ) . '</span><code>' . esc_html( $value ) . '</code></label>';
+		echo ' <label for="' . $radio_attrs['id'] . '" class="title-label"><span class="date-time-text format-i18n">' . date_i18n( $value ) . '</span><code>' . esc_html( $value ) . '</code></label>';
 		echo '</span><br />';
 	}
 
@@ -381,7 +395,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 
 	echo '<span class="radio-item">';
 	echo '<input' . attrs( $radio_attrs, false ) . checked( $custom, true, false ) . ' />';
-	echo ' <label for="' . $radio_attrs['id'] . '">' . $custom_radio_label . '</label>';
+	echo ' <label for="' . $radio_attrs['id'] . '" class="title-label">' . $custom_radio_label . '</label>';
 	echo '</span><br />';
 
 	$description_id = $radio_attrs['id'] . '-custom-description';
