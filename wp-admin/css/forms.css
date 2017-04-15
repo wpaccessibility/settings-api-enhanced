@@ -4,12 +4,20 @@ However it is using the new classes instead of the Core table classes.
 These styles can therefore be used as a starting point to move from the
 old two-column layout to a modern one-column layout.
  */
-.section {
-	margin: 0 0 40px;
+
+/* Experimental: increase left padding as in marestad design. */
+.settings .wrap {
+	padding-left: 40px;
 }
 
-.section:last-child {
-	margin: 0;
+.section {
+	margin: 0 0 50px;
+}
+
+.setting {
+	margin-top: 20px;
+	max-width: 780px;
+	clear: both;
 }
 
 .setting .form-required.form-invalid .control:after {
@@ -32,95 +40,68 @@ old two-column layout to a modern one-column layout.
 	vertical-align: middle;
 }
 
-.setting + p.submit,
-.setting + input + p.submit,
-.setting + input + input + p.submit {
-	border-top: none;
-	padding-top: 0;
-}
-
 /* Labels, text inside inputs, descriptions, checkboxes, and radios should be aligned. Needs some work. */
 .setting input,
-.setting select,
 .setting textarea {
-	margin: 0;
+	margin: 0 0 0 -6px;
 	padding: 5px;
 	font-size: 16px;
 }
 
+.setting select {
+	min-width: 140px;
+	margin: 0 0 0 -9px;
+	padding: 0 4px; /* No effect on webkit browsers. */
+	font-size: 16px;
+}
+
+.settings .submit {
+	margin-left: -6px;
+	padding-top: 0;
+}
+
 .setting .field-title {
 	color: #555d66;
-	padding: 5px 10px 10px 6px;
+	padding: 5px 10px 10px 0;
 }
 
 .setting .description {
-	margin: 4px 0 0 6px;
+	margin: 4px 0 0 0;
+	font-size: inherit;
+	font-style: normal;
+	color: #555d66;
+}
+
+.setting .timezone-info:last-child,
+.setting .date-time-doc {
+	margin-bottom: 0;
 }
 
 .setting input[type="checkbox"],
 .setting input[type="radio"] {
-	margin: 0 4px 0 6px;
-}
-
-.setting select {
-	min-width: 140px;
-	padding: 0;
-}
-
-.setting option {
-	padding: 0;
-}
-
-.setting select,
-.setting option {
-	/* To gain control over the appearance on WebKit */
-	/* -webkit-appearance : none; */
-	/* To gain control over the appearance on Gecko */
-	/* -moz-appearance : none; */
-	/* To gain control over the appearance on Presto (Opera) and Trident (IE)
-	Note that it also work on Gecko and has partial effects on WebKit */
-	/* background : none; */
+	margin: 0 4px 0 0;
 }
 
 .setting .title-label {
 	font-size: 16px;
 }
 
-.setting span.description.important {
-	font-size: 12px;
-}
-
-.setting {
-	margin-top: 20px;
-	max-width: 780px;
-	clear: both;
-}
-
 .setting .control {
 	display: block;
-	margin-bottom: 9px;
 	padding: 5px 0;
 	line-height: 1.3;
-}
-
-.setting .field-title.th-full {
-	width: auto;
-	font-weight: 400;
-}
-
-.setting .date-time-doc {
-	margin-top: 1em;
-}
-
-.setting .timezone-info {
-	margin: 1em 0;
 }
 
 .setting .radio-item,
 .setting .multibox-item {
 	display: inline-block;
 	line-height: 1.4em;
-	margin: 0.25em 0 0.5em !important;
+	margin-top: 10px;
+}
+
+.setting .radio-item:first-child,
+.setting .multibox-item:first-child {
+	margin-top: 0;
 }
 
 .setting .pre {
@@ -135,6 +116,33 @@ old two-column layout to a modern one-column layout.
 .setting .updated p {
 	font-size: 13px;
 	margin: 0.3em 0;
+}
+
+.setting code {
+	margin: 0;
+}
+
+[for="date_format_custom_radio"],
+[for="time_format_custom_radio"] {
+	display: inline-block;
+	min-width: 10em;
+}
+
+.setting .date-time-custom-format-input {
+	margin: 0;
+	padding: 3px 4px 2px 4px;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 13px;
+	vertical-align: middle;
+	border: 1px solid transparent; /* Experimental design. */
+	border-bottom: 2px solid #0073aa; /* Experimental design. */
+	background: #f1f1f1; /* Experimental design. */
+	-webkit-box-shadow: none; /* Experimental design. */
+	box-shadow: none; /* Experimental design. */
+}
+
+.date-time-custom-format-input + .description {
+	vertical-align: middle;
 }
 
 #profile-page .setting textarea {
