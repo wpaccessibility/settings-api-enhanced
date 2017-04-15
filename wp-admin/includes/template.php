@@ -188,8 +188,6 @@ function sae_do_settings_sections( $page ) {
 	}
 
 	foreach ( (array) $wp_settings_sections[$page] as $section ) {
-		echo '<div class="section">';
-
 		if ( $section['title'] ) {
 			echo "<h2>{$section['title']}</h2>\n";
 		}
@@ -201,8 +199,6 @@ function sae_do_settings_sections( $page ) {
 		if ( isset( $wp_settings_fields ) && isset( $wp_settings_fields[ $page ] ) && isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
 			sae_do_settings_fields( $page, $section['id'] );
 		}
-
-		echo '</div>';
 	}
 }
 
@@ -226,8 +222,14 @@ function sae_do_settings_fields($page, $section) {
 	if ( ! isset( $wp_settings_fields[$page][$section] ) )
 		return;
 
+	$last_field_in_section = end( $wp_settings_fields[$page][$section] );
+
 	foreach ( (array) $wp_settings_fields[$page][$section] as $field ) {
-		$class = 'setting';
+		$class = 'setting section-' . esc_attr( $section );
+
+		if ( $last_field_in_section === $field ) {
+			$class .= ' last-in-section';
+		}
 
 		if ( ! empty( $field['args']['class'] ) ) {
 			$class .= ' ' . $field['args']['class'];
