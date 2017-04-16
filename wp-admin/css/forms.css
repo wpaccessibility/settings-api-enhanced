@@ -10,14 +10,14 @@ old two-column layout to a modern one-column layout.
 	padding-left: 40px;
 }
 
+.section {
+	margin: 0 0 50px;
+}
+
 .setting {
 	margin-top: 20px;
 	max-width: 780px;
 	clear: both;
-}
-
-.setting.last-in-section {
-	margin: 0 0 50px;
 }
 
 .setting .form-required.form-invalid .control:after {
