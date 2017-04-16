@@ -8,18 +8,6 @@
  */
 
 /**
- * Add a CSS class on the settings pages body element.
- *
- * @since 4.8.0
- *
- * @param string $classes
- * @return string
- */
-function wp_settings_body_class( $classes ) {
-	return "$classes settings";
-}
-
-/**
  * Adds default settings fields for the General Settings page.
  *
  * @since 4.8.0
