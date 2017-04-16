@@ -693,3 +693,15 @@ function get_settings_field_option( $field_args ) {
 
 	return $value;
 }
+
+/**
+ * Add a CSS class on the settings pages body element.
+ *
+ * @since 4.8.0
+ *
+ * @param string $classes The CSS body classes.
+ * @return string $classes The filtered CSS body classes.
+ */
+function wp_settings_body_class( $classes ) {
+	return "$classes settings";
+}
