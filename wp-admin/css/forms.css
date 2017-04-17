@@ -155,21 +155,36 @@ old two-column layout to a modern one-column layout.
 }
 
 @media screen and ( max-width: 782px ) {
-	.setting {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
+	.settings .wrap {
+		padding: 0 20px;
 	}
 
-	.setting {
-		display: block;
+	.setting input {
+		margin: 0 0 0 -11px;
+		padding: 7px 10px;
+		line-height: 1.5;
+	}
+
+	.setting select {
+		margin: 0 0 0 -14px;
+	}
+
+	.setting input.small-text {
+		margin: 0 0 0 -6px;
+		max-width: 80px !important; /* Avoid !important when merging in core. */
+	}
+
+	.setting input[type="radio"],
+	.setting input[type="checkbox"] {
+		display: inline-block;
+		height: 25px;
+		width: 25px !important; /* Avoid !important when merging in core. */
 	}
 
 	.setting .field-title,
 	.setting .control {
 		display: block;
 		width: auto;
-		vertical-align: middle;
 	}
 
 	.setting .color-palette td {
@@ -180,14 +195,11 @@ old two-column layout to a modern one-column layout.
 		margin-right: 10px;
 	}
 
-	.setting input[type="text"],
-	.setting input[type="email"],
-	.setting input[type="password"],
+	.setting input,
 	.setting select,
 	.setting textarea,
-	.setting span.description,
 	#profile-page .setting textarea {
-		width: 100%;
+		width: calc( 100% + 22px ) !important; /* Avoid !important when merging in core. */
 		font-size: 16px;
 		line-height: 1.5;
 		padding: 7px 10px;
@@ -224,8 +236,6 @@ old two-column layout to a modern one-column layout.
 
 	.setting .field-title {
 		padding-top: 10px;
-		padding-bottom: 0;
-		border-bottom: 0;
 	}
 
 	.setting .control {
