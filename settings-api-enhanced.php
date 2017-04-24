@@ -34,7 +34,7 @@ function sae_replace_options_general() {
 }
 
 /**
- * Replaces the Settings > edia screen with the plugin variant.
+ * Replaces the Settings > Media screen with the plugin variant.
  */
 function sae_replace_options_media() {
 	global $title, $parent_file, $submenu_file, $timezone_format;

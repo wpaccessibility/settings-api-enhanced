@@ -1,6 +1,6 @@
 <?php
 /**
- * WordPress Options implementation for General Settings.
+ * WordPress Options implementation for Media Settings.
  *
  * @package WordPress
  * @subpackage Administration
@@ -8,7 +8,7 @@
  */
 
 /**
- * Adds default settings fields for the General Settings page.
+ * Adds default settings fields for the Media Settings page.
  *
  * @since 4.8.0
  */
