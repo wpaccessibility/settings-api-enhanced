@@ -17,6 +17,8 @@ require_once( SAE_ABSPATH . 'wp-admin/includes/options-general.php' );
 
 add_settings_fields_options_general();
 
+add_filter( 'admin_body_class', 'wp_settings_body_class' );
+
 if ( ! current_user_can( 'manage_options' ) )
 	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
 
