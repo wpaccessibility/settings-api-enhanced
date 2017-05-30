@@ -17,9 +17,13 @@
 function sae_options_general_add_js() {
 ?>
 <script type="text/javascript">
-	jQuery(document).ready(function($){
+	jQuery( document ).ready(function( $ ) {
 		var $siteName = $( '#wp-admin-bar-site-name' ).children( 'a' ).first(),
-			homeURL = ( <?php echo wp_json_encode( get_home_url() ); ?> || '' ).replace( /^(https?:\/\/)?(www\.)?/, '' );
+			homeURL = ( <?php echo wp_json_encode( get_home_url() ); ?> || '' ).replace( /^(https?:\/\/)?(www\.)?/, '' ),
+			$dateTimeFormatRadios = $( '[name="date_format"], [name="time_format"]' ),
+			$dateTimeCustomFormatRadios = $( '#date_format_custom_radio, #time_format_custom_radio' ),
+			$dateTimeCustomFormatInputs = $( '#date_format_custom, #time_format_custom' ),
+			$languageSelect = $( '#WPLANG' );
 
 		$( '#blogname' ).on( 'input', function() {
 			var title = $.trim( $( this ).val() ) || homeURL;
@@ -32,35 +36,55 @@ function sae_options_general_add_js() {
 			$siteName.text( title );
 		});
 
-		$("input[name='date_format']").click(function(){
-			if ( "date_format_custom_radio" != $(this).attr("id") )
-				$( "input[name='date_format_custom']" ).val( $( this ).val() ).parent().find( '.example' ).text( $( this ).parent().find( '.format-i18n' ).text() );
-		});
-		$("input[name='date_format_custom']").focus(function(){
-			$( '#date_format_custom_radio' ).prop( 'checked', true );
+		/*
+		 * When clicking on a date-time format radio button other than the custom
+		 * one, update the custom format input and the example text.
+		 */
+		$dateTimeFormatRadios.not( $dateTimeCustomFormatRadios ).click( function() {
+			var $setting = $( this ).closest( '.settings-field' );
+
+			$setting.find( '[type="text"]' ).val( $( this ).val() );
+			$setting.find( '.example' ).text(
+				// Get the label associated to the radio button, and find the formatted date-time text.
+				$( '[for="' + $( this ).attr( 'id' ) + '"]' ).find( '.format-i18n' ).text()
+			);
 		});
 
-		$("input[name='time_format']").click(function(){
-			if ( "time_format_custom_radio" != $(this).attr("id") )
-				$( "input[name='time_format_custom']" ).val( $( this ).val() ).parent().find( '.example' ).text( $( this ).parent().find( '.format-i18n' ).text() );
-		});
-		$("input[name='time_format_custom']").focus(function(){
-			$( '#time_format_custom_radio' ).prop( 'checked', true );
-		});
-		$("input[name='date_format_custom'], input[name='time_format_custom']").change( function() {
-			var format = $(this);
-			format.siblings( '.spinner' ).addClass( 'is-active' );
-			$.post(ajaxurl, {
-					action: 'date_format_custom' == format.attr('name') ? 'date_format' : 'time_format',
-					date : format.val()
-				}, function(d) { format.siblings( '.spinner' ).removeClass( 'is-active' ); format.siblings('.example').text(d); } );
-		});
+		// Get the date-time custom format input fields.
+		$dateTimeCustomFormatInputs
+			/*
+			 * Check the custom date-time format radio button when clicking,
+			 * typing, pasting in the custom format input field.
+			 */
+			.on( 'click input', function() {
+				$( this ).closest( '.settings-field' ).find( $dateTimeCustomFormatRadios ).prop( 'checked', true );
+			})
+			/*
+			 * When the custom format input field value changes, sanitize the
+			 * input, show a spinner, and update the example text.
+			 */
+			.change( function() {
+				var $format = $( this ),
+					$setting = $format.closest( '.settings-field' ),
+					$spinner = $setting.find( '.spinner' ),
+					$example = $setting.find( '.example' );
 
-		var languageSelect = $( '#WPLANG' );
+				$spinner.addClass( 'is-active' );
+
+				$.post( ajaxurl, {
+						action: 'date_format_custom' == $format.attr( 'name' ) ? 'date_format' : 'time_format',
+						date : $format.val()
+					}, function( formattedDateTime ) {
+						$spinner.removeClass( 'is-active' );
+						$example.text( formattedDateTime );
+					}
+				);
+			});
+
 		$( 'form' ).submit( function() {
 			// Don't show a spinner for English and installed languages,
 			// as there is nothing to download.
-			if ( ! languageSelect.find( 'option:selected' ).data( 'installed' ) ) {
+			if ( ! $languageSelect.find( 'option:selected' ).data( 'installed' ) ) {
 				$( '#submit', this ).after( '<span class="spinner language-install-spinner" />' );
 			}
 		});
