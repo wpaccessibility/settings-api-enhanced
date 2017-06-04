@@ -61,7 +61,6 @@ function sae_load() {
 
 	require_once $admin_path . 'includes/template.php';
 	require_once $admin_path . 'includes/options.php';
-	require_once $admin_path . 'includes/options-general.php';
 
 	add_action( 'admin_enqueue_scripts', 'sae_enqueue_forms_css' );
 	add_action( 'load-options-general.php', 'sae_replace_options_general' );
