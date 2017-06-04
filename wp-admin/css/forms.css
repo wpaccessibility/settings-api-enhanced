@@ -269,3 +269,7 @@ textarea {
 		width: auto;
 	}
 }
+
+.front-static-pages ul {
+	margin-left: 18px;
+}

@@ -92,3 +92,25 @@ function sae_options_general_add_js() {
 </script>
 <?php
 }
+
+/**
+ * Display JavaScript on the page.
+ *
+ * @since 3.5.0
+ */
+function sae_options_reading_add_js() {
+?>
+<script type="text/javascript">
+	jQuery( document ).ready( function( $ ){
+		var section = $( '.js-front-static-pages' ),
+			staticPage = section.find( 'input:radio[value="page"]' ),
+			selects = section.find( 'select' ),
+			check_disabled = function(){
+				selects.prop( 'disabled', ! staticPage.prop( 'checked' ) );
+			};
+		check_disabled();
+ 		section.find( 'input:radio' ).change( check_disabled );
+	});
+</script>
+<?php
+}
