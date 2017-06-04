@@ -10,7 +10,7 @@
 	margin-bottom: 0;
 }
 
-.settings-sections + p.submit {
+.settings-section + p.submit {
 	border-top: none;
 	padding-top: 0;
 }

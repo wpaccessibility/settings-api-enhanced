@@ -192,8 +192,6 @@ function sae_do_settings_sections( $page ) {
 	if ( ! isset( $wp_settings_sections[$page] ) )
 		return;
 
-	echo '<div class="settings-sections">';
-
 	foreach ( (array) $wp_settings_sections[$page] as $section ) {
 		echo '<div class="settings-section">';
 
@@ -211,8 +209,6 @@ function sae_do_settings_sections( $page ) {
 
 		echo '</div>';
 	}
-
-	echo '</div>';
 }
 
 /**
