@@ -106,7 +106,7 @@ function sae_add_settings_field($id, $title, $callback, $page, $section = 'defau
 	$defaults = array(
 		'input_id'       => $id,
 		'input_name'     => $id,
-		'input_class'    => '',
+		'input_class'    => 'settings-field-control',
 		'label_class'    => '',
 		'class'          => '',
 		'description'    => '',
@@ -162,6 +162,12 @@ function sae_add_settings_field($id, $title, $callback, $page, $section = 'defau
 		if ( ! isset( $args['description_id'] ) ) {
 			$args['description_id'] = $args['input_id'] . '-description';
 		}
+	}
+
+	$input_classes = explode( ' ', $args['input_class'] );
+	if ( ! in_array( 'settings-field-control', $input_classes, true ) ) {
+		$input_classes[] = 'settings-field-control';
+		$args['input_class'] = implode( ' ', $input_classes );
 	}
 
 	$wp_settings_fields[$page][$section][$id] = array('id' => $id, 'title' => $title, 'callback' => $callback, 'args' => $args);
@@ -258,8 +264,6 @@ function sae_do_settings_fields($page, $section) {
 			}
 		}
 
-		echo '<span class="settings-field-control">';
-
 		// Duplicate arguments to not modify globals permanently.
 		$field_args = $field['args'];
 
@@ -285,7 +289,6 @@ function sae_do_settings_fields($page, $section) {
 			}
 		}
 
-		echo '</span>';
 		echo '</' . $wrap . '>';
 	}
 }
