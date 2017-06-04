@@ -47,13 +47,14 @@ function add_settings_fields_options_general() {
 			'description' => __( 'This address is used for admin purposes, like new user notification.' ),
 		) );
 
-		sae_add_settings_section( 'users', '', null, 'general' );
+		sae_add_settings_section( 'membership', __( 'Membership' ), null, 'general' );
 
-		sae_add_settings_field( 'users_can_register', __( 'Membership' ), 'checkbox', 'general', 'users', array(
-			'label' => __( 'Anyone can register' ),
+		sae_add_settings_field( 'users_can_register', '', 'checkbox', 'general', 'membership', array(
+			'skip_title' => true,
+			'label'      => __( 'Anyone can register' ),
 		) );
 
-		sae_add_settings_field( 'default_role', __( 'New User Default Role' ), 'render_settings_field_roles_dropdown', 'general', 'users' );
+		sae_add_settings_field( 'default_role', __( 'New User Default Role' ), 'render_settings_field_roles_dropdown', 'general', 'membership' );
 	} else {
 		sae_add_settings_section( 'email', '', null, 'general' );
 
@@ -68,7 +69,7 @@ function add_settings_fields_options_general() {
 		) );
 	}
 
-	sae_add_settings_section( 'locale', '', null, 'general' );
+	sae_add_settings_section( 'locale', __( 'Locale' ), null, 'general' );
 
 	$languages = get_available_languages();
 	$translations = wp_get_available_translations();
