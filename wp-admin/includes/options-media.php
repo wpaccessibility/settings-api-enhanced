@@ -1,6 +1,6 @@
 <?php
 /**
- * WordPress Options implementation for General Settings.
+ * WordPress Options implementation for Media Settings.
  *
  * @package WordPress
  * @subpackage Administration
@@ -8,44 +8,44 @@
  */
 
 /**
- * Adds default settings fields for the General Settings page.
+ * Adds default settings fields for the Media Settings page.
  *
  * @since 4.8.0
  */
 function add_settings_fields_options_media() {
-	sae_add_settings_section( 'thumbnail-size', __( 'Image sizes' ), 'sizes_before', 'media' );
+	sae_add_settings_section( 'thumbnail_size', __( 'Image sizes' ), 'settings_section_thumbnail_size_before', 'media' );
 
-	sae_add_settings_field( 'thumbnail_size_w', __( 'Thumbnail width' ), 'number', 'media', 'thumbnail-size', array(
+	sae_add_settings_field( 'thumbnail_size_w', __( 'Thumbnail width' ), 'number', 'media', 'thumbnail_size', array(
 		'input_class' => 'small-text',
 	) );
 
-	sae_add_settings_field( 'thumbnail_size_h', __( 'Thumbnail height' ), 'number', 'media', 'thumbnail-size', array(
+	sae_add_settings_field( 'thumbnail_size_h', __( 'Thumbnail height' ), 'number', 'media', 'thumbnail_size', array(
 		'input_class' => 'small-text',
 	) );
 
-	sae_add_settings_field( 'thumbnail_crop', '', 'checkbox', 'media', 'thumbnail-size', array(
+	sae_add_settings_field( 'thumbnail_crop', '', 'checkbox', 'media', 'thumbnail_size', array(
 		'skip_title'  => true,
 		'label'       => __( 'Crop thumbnails to exact dimensions' ),
 		'description' => __( 'Normally thumbnails are proportional.' ),
 	) );
 
-	sae_add_settings_section( 'medium-size', '', null, 'media' );
+	sae_add_settings_section( 'medium_size', '', null, 'media' );
 
-	sae_add_settings_field( 'medium_size_w', __( 'Medium image max width' ), 'number', 'media', 'medium-size', array(
+	sae_add_settings_field( 'medium_size_w', __( 'Medium image max width' ), 'number', 'media', 'medium_size', array(
 		'input_class' => 'small-text',
 	) );
 
-	sae_add_settings_field( 'medium_size_h', __( 'Medium image max height' ), 'number', 'media', 'medium-size', array(
+	sae_add_settings_field( 'medium_size_h', __( 'Medium image max height' ), 'number', 'media', 'medium_size', array(
 		'input_class' => 'small-text',
 	) );
 
-	sae_add_settings_section( 'large-size', '', null, 'media' );
+	sae_add_settings_section( 'large_size', '', null, 'media' );
 
-	sae_add_settings_field( 'large_size_w', __( 'Large image max width' ), 'number', 'media', 'large-size', array(
+	sae_add_settings_field( 'large_size_w', __( 'Large image max width' ), 'number', 'media', 'large_size', array(
 		'input_class' => 'small-text',
 	) );
 
-	sae_add_settings_field( 'large_size_h', __( 'Large image max height' ), 'number', 'media', 'large-size', array(
+	sae_add_settings_field( 'large_size_h', __( 'Large image max height' ), 'number', 'media', 'large_size', array(
 		'input_class' => 'small-text',
 	) );
 
@@ -84,6 +84,11 @@ function add_settings_fields_options_media() {
 
 }
 
-function sizes_before() {
+/**
+ * Settings section callback for the 'thumbnail_size' section.
+ *
+ * @since 4.8.0
+ */
+function settings_section_thumbnail_size_before() {
 	echo '<p>' . __( 'The sizes listed below determine the maximum dimensions in pixels to use when adding an image to the Media Library.' ) . '</p>';
 }
