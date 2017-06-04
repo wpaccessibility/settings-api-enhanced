@@ -48,10 +48,10 @@ function sae_replace_options_reading() {
 }
 
 /**
- * Replaces the Settings > edia screen with the plugin variant.
+ * Replaces the Settings > Media screen with the plugin variant.
  */
 function sae_replace_options_media() {
-	global $title, $parent_file, $submenu_file, $timezone_format;
+	global $title, $parent_file, $submenu_file;
 
 	// Ensure submenu item is highlighted correctly.
 	$submenu_file = 'options-media.php';
@@ -75,7 +75,6 @@ function sae_load() {
 
 	require_once $admin_path . 'includes/template.php';
 	require_once $admin_path . 'includes/options.php';
-	require_once $admin_path . 'includes/options-general.php';
 
 	add_action( 'admin_enqueue_scripts', 'sae_enqueue_forms_css' );
 	add_action( 'load-options-general.php', 'sae_replace_options_general' );

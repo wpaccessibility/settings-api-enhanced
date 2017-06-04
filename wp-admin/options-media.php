@@ -1,6 +1,6 @@
 <?php
 /**
- * General settings administration panel.
+ * Media settings administration panel.
  *
  * @package WordPress
  * @subpackage Administration
@@ -12,7 +12,7 @@
 /** WordPress Translation Install API */
 require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
 
-/** WordPress Options implementation for General Settings */
+/** WordPress Options implementation for Media Settings */
 require_once( SAE_ABSPATH . 'wp-admin/includes/options-media.php' );
 
 add_settings_fields_options_media();

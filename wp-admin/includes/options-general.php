@@ -404,7 +404,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 /**
  * Settings field callback to retrieve the admin email.
  *
- * @since 4.8
+ * @since 4.8.0
  *
  * @return string Admin email address.
  */
@@ -415,7 +415,7 @@ function settings_field_admin_email_get_option() {
 /**
  * Settings field callback to print additional content for the 'admin_email' control.
  *
- * @since 4.8
+ * @since 4.8.0
  */
 function settings_field_admin_email_after() {
 	$new_admin_email = get_option( 'new_admin_email' );
@@ -440,7 +440,7 @@ function settings_field_admin_email_after() {
 /**
  * Settings field callback to print additional content for the 'WPLANG' control.
  *
- * @since 4.8
+ * @since 4.8.0
  */
 function settings_field_wplang_after() {
 	// Add note about deprecated WPLANG constant.
@@ -460,7 +460,7 @@ function settings_field_wplang_after() {
 /**
  * Settings field callback to print additional content for the 'time_format' control.
  *
- * @since 4.8
+ * @since 4.8.0
  */
 function settings_field_time_format_after() {
 	?>
