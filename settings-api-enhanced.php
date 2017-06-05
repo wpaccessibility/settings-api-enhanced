@@ -48,6 +48,20 @@ function sae_replace_options_media() {
 }
 
 /**
+ * Replaces the Settings > Discussion screen with the plugin variant.
+ */
+function sae_replace_options_discussion() {
+	global $title, $parent_file, $submenu_file;
+
+	// Ensure submenu item is highlighted correctly.
+	$submenu_file = 'options-discussion.php';
+
+	require_once SAE_ABSPATH . 'wp-admin/options-discussion.php';
+
+	exit;
+}
+
+/**
  * Loads the plugin files.
  */
 function sae_load() {
@@ -65,6 +79,7 @@ function sae_load() {
 	add_action( 'admin_enqueue_scripts', 'sae_enqueue_forms_css' );
 	add_action( 'load-options-general.php', 'sae_replace_options_general' );
 	add_action( 'load-options-media.php', 'sae_replace_options_media' );
+	add_action( 'load-options-discussion.php', 'sae_replace_options_discussion' );
 }
 
 sae_load();
