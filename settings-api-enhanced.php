@@ -48,6 +48,20 @@ function sae_replace_options_media() {
 }
 
 /**
+ * Replaces the Settings > Permalink screen with the plugin variant.
+ */
+function sae_replace_options_permalink() {
+	global $title, $parent_file, $submenu_file, $is_nginx, $wp_rewrite;
+
+	// Ensure submenu item is highlighted correctly.
+	$submenu_file = 'options-permalink.php';
+
+	require_once SAE_ABSPATH . 'wp-admin/options-permalink.php';
+
+	exit;
+}
+
+/**
  * Loads the plugin files.
  */
 function sae_load() {
@@ -65,6 +79,7 @@ function sae_load() {
 	add_action( 'admin_enqueue_scripts', 'sae_enqueue_forms_css' );
 	add_action( 'load-options-general.php', 'sae_replace_options_general' );
 	add_action( 'load-options-media.php', 'sae_replace_options_media' );
+	add_action( 'load-options-permalink.php', 'sae_replace_options_permalink' );
 }
 
 sae_load();

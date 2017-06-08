@@ -118,6 +118,16 @@ input[type="radio"].settings-field-control + label,
 	margin: 0.3em 0;
 }
 
+.settings-field .radio-item.permalink-structure-radio-item {
+	margin: 20px 0 !important;
+}
+
+.settings-field .radio-item.permalink-structure-radio-item label {
+	display: inline-block;
+	width: 200px;
+	margin-right: 10px;
+}
+
 /*------------------------------------------------------------------------------
   6.0 - Responsive View
 ------------------------------------------------------------------------------*/
