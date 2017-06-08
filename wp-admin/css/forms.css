@@ -1,60 +1,23 @@
-/*
-This file is currently an exact representation of the Core markup.
-However it is using the new classes instead of the Core table classes.
-These styles can therefore be used as a starting point to move from the
-old two-column layout to a modern one-column layout.
- */
-
-@-moz-document url-prefix() {
-	.settings-fields input.tog {
-		margin-bottom: -1px;
-	}
-}
+/*------------------------------------------------------------------------------
+  1.0 - Settings Section
+------------------------------------------------------------------------------*/
 
 .settings-section {
-	margin: 0 0 40px;
+	margin-bottom: 50px;
 }
 
 .settings-section:last-child {
-	margin: 0;
+	margin-bottom: 0;
 }
 
-.settings-fields .form-required.form-invalid .settings-field-control:after {
-	content: "\f534";
-	font: 400 20px/1 dashicons;
-	color: #dc3232;
-	margin-left: -25px;
-	vertical-align: middle;
-}
-
-.settings-fields .form-required.user-pass1-wrap.form-invalid .settings-field-control:after {
-	content: "";
-}
-
-.settings-fields .form-required.user-pass1-wrap.form-invalid .password-input-wrapper:after {
-	content: "\f534";
-	font: 400 20px/1 dashicons;
-	color: #dc3232;
-	margin: 0 6px 0 -29px;
-	vertical-align: middle;
-}
-
-.settings-fields + p.submit,
-.settings-fields + input + p.submit,
-.settings-fields + input + input + p.submit {
+.settings-section + p.submit {
 	border-top: none;
 	padding-top: 0;
 }
 
-.settings-fields input,
-select,
-textarea {
-	font-size: 16px;
-}
-
-.settings-fields span.description.important {
-	font-size: 12px;
-}
+/*------------------------------------------------------------------------------
+  2.0 - Settings Fields
+------------------------------------------------------------------------------*/
 
 .settings-fields {
 	border-collapse: collapse;
@@ -63,101 +26,100 @@ textarea {
 	clear: both;
 }
 
-.settings-fields,
-.settings-fields .settings-field-control,
-.settings-fields .settings-field-title,
-.settings-fields .settings-field-control p {
+.settings-field {
+	margin-bottom: 19px;
 	font-size: 12px;
-}
-
-.settings-fields .settings-field-control {
-	display: block;
-	margin-bottom: 9px;
-	padding: 5px 0;
 	line-height: 1.3;
-	vertical-align: middle;
 }
 
-.settings-fields .settings-field-title {
-	color: #23282d;
-	text-shadow: none;
-	vertical-align: baseline;
-	vertical-align: top;
-	text-align: left;
-	padding: 5px 10px 10px 0;
-	line-height: 1.3;
-	font-weight: 400;
-}
-
-.settings-fields .settings-field {
-	padding: 10px 0 0;
-}
-
-.settings-fields .settings-field {
-	padding: 10px 0 0;
-}
-
-.settings-fields .settings-field-title.th-full {
-	width: auto;
-	font-weight: 400;
-}
-
-.settings-fields .settings-field-control p {
-	margin-top: 4px;
+.settings-field:last-child {
 	margin-bottom: 0;
 }
 
-.settings-fields .settings-field-control .title-label {
-	font-weight: 600;
+/*------------------------------------------------------------------------------
+  3.0 - Settings Field Titles
+------------------------------------------------------------------------------*/
+
+.settings-field-title {
+	display: block;
+	color: #23282d;
+	text-shadow: none;
+	vertical-align: top;
+	text-align: left;
+	padding: 5px 10px 10px 0;
+	font-weight: 400;
 }
 
-.settings-fields .date-time-doc {
-	margin-top: 1em;
+/*------------------------------------------------------------------------------
+  4.0 - Settings Field Controls
+------------------------------------------------------------------------------*/
+
+.settings-field-control {
+	padding: 3px 5px;
+	font-size: 16px;
 }
 
-.settings-fields p.timezone-info {
-	margin: 1em 0;
+input[type="checkbox"].settings-field-control,
+input[type="radio"].settings-field-control {
+	margin: 0 4px 0 0;
 }
 
-.settings-fields .settings-field-control .radio-item,
-.settings-fields .settings-field-control .multibox-item {
+input[type="checkbox"].settings-field-control + label,
+input[type="radio"].settings-field-control + label,
+.settings-field .radio-item label,
+.settings-field .multibox-item label,
+.settings-field .radio-item label code,
+.settings-field .multibox-item label code,
+.settings-field .radio-item .description,
+.settings-field .multibox-item .description {
+	font-size: 16px;
+}
+
+.settings-field .radio-item,
+.settings-field .multibox-item {
 	display: inline-block;
 	line-height: 1.4em;
 	margin: 0.25em 0 0.5em !important;
 }
 
-.settings-fields input[type="checkbox"] {
-	margin: 0 4px 0 0;
+/*------------------------------------------------------------------------------
+  5.0 - Settings Field Misc Content
+------------------------------------------------------------------------------*/
+
+.settings-field p {
+	margin-top: 4px;
+	margin-bottom: 0;
 }
 
-.settings-fields input.tog,
-.settings-fields input[type="radio"] {
-	margin: 0 4px 0 0;
-	float: none;
+.settings-field .title-label {
+	font-weight: 400;
 }
 
-.settings-fields .pre {
+.settings-field .date-time-doc {
+	margin-top: 1em;
+}
+
+.settings-field p.timezone-info {
+	margin: 1em 0;
+}
+
+.settings-field .pre {
 	padding: 8px;
 	margin: 0;
 }
 
-.settings-fields .settings-field-control .updated {
+.settings-field .updated {
 	font-size: 13px;
 }
 
-.settings-fields .settings-field-control .updated p {
+.settings-field .updated p {
 	font-size: 13px;
 	margin: 0.3em 0;
 }
 
-#profile-page .settings-fields textarea {
-	width: 500px;
-	margin-bottom: 6px;
-}
-
-#profile-page .settings-fields #rich_editing {
-	margin-right: 5px;
-}
+/*------------------------------------------------------------------------------
+  6.0 - Responsive View
+------------------------------------------------------------------------------*/
 
 @media screen and ( max-width: 782px ) {
 	.settings-fields {
@@ -166,32 +128,18 @@ textarea {
 		box-sizing: border-box;
 	}
 
-	.settings-field {
-		display: block;
+	.settings-field-title {
+		padding-top: 10px;
+		padding-bottom: 0;
+		border-bottom: 0;
 	}
 
-	.settings-fields .settings-field-title,
-	.settings-fields .settings-field-control {
-		display: block;
-		width: auto;
-		vertical-align: middle;
-	}
-
-	.settings-fields .color-palette td {
-		width: 15px;
-	}
-
-	.settings-fields table.color-palette {
-		margin-right: 10px;
-	}
-
-	.settings-fields .settings-field-control input[type="text"],
-	.settings-fields .settings-field-control input[type="email"],
-	.settings-fields .settings-field-control input[type="password"],
-	.settings-fields .settings-field-control select,
-	.settings-fields .settings-field-control textarea,
-	.settings-fields span.description,
-	#profile-page .settings-fields textarea {
+	input[type="text"].settings-field-control,
+	input[type="email"].settings-field-control,
+	input[type="password"].settings-field-control,
+	select.settings-field-control,
+	textarea.settings-field-control,
+	.settings-field span.description {
 		width: 100%;
 		font-size: 16px;
 		line-height: 1.5;
@@ -203,16 +151,11 @@ textarea {
 		box-sizing: border-box;
 	}
 
-	.settings-fields .form-required.form-invalid .settings-field-control:after {
-		float: right;
-		margin: -30px 3px 0 0;
-	}
-
-	#wpbody .settings-fields .settings-field-control select {
+	select.settings-field-control {
 		height: 40px;
 	}
 
-	.settings-fields input[type="text"].small-text {
+	input[type="text"].settings-field-control.small-text {
 		width: auto;
 		max-width: 55px;
 		display: inline;
@@ -220,52 +163,18 @@ textarea {
 		margin: 0 3px;
 	}
 
-	.settings-fields span.description {
+	input.settings-field-control.regular-text {
+		width: 100%;
+	}
+
+	.settings-field span.description {
 		display: inline;
 		padding: 4px 0 0;
 		line-height: 1.4em;
 		font-size: 14px;
 	}
 
-	.settings-fields .settings-field-title {
-		padding-top: 10px;
-		padding-bottom: 0;
-		border-bottom: 0;
-	}
-
-	.settings-fields .settings-field-control {
-		margin-bottom: 0;
-		padding-bottom: 6px;
-		padding-top: 4px;
-		padding-left: 0;
-	}
-
-	.settings-fields.permalink-structure .settings-field-control code {
-		margin-left: 32px;
-	}
-
-	.settings-fields.permalink-structure .settings-field-control input[type="text"] {
-		margin-left: 32px;
-		margin-top: 4px;
-		width: 96%;
-	}
-
-	.settings-fields input.regular-text {
-		width: 100%;
-	}
-
 	.settings-fields label {
 		font-size: 14px;
-	}
-
-	.settings-fields fieldset label {
-		display: block;
-	}
-}
-
-@media only screen and (max-width: 768px) {
-	#profile-page .settings-fields textarea {
-		max-width: 400px;
-		width: auto;
 	}
 }
