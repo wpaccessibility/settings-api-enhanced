@@ -9,9 +9,6 @@
 /** WordPress Administration Bootstrap */
 //require_once( dirname( __FILE__ ) . '/admin.php' );
 
-/** WordPress Translation Install API */
-require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
-
 /** WordPress Options implementation for Media Settings */
 require_once( SAE_ABSPATH . 'wp-admin/includes/options-media.php' );
 
