@@ -49,35 +49,61 @@ function sae_add_settings_section($id, $title, $callback, $page) {
  * @param string          $section  Optional. The slug-name of the section of the settings page
  *                                  in which to show the box. Default 'default'.
  * @param array           $args {
- *     Optional. Extra arguments used when outputting the field.
+ *     Optional. Extra arguments used when outputting the field. There are several arguments that only apply
+ *     for specific $callback values.
  *
- *     @type string          $input_id       The 'id' attribute of the input field. Default is the
- *                                           value of $id.
- *     @type string          $input_name     The `name` attribute of the input field. Default is the
- *                                           value of $id.
- *     @type string          $input_class    CSS Class to be added to the input field element when
- *                                           it is output. Default empty.
- *     @type string          $label_for      When supplied, the setting title will be wrapped
- *                                           in a `<label>` element, its `for` attribute populated
- *                                           with this value. Default is the value of $input_id.
- *     @type string          $class          CSS Class to be added to the `<tr>` element when the
- *                                           field is output. Default empty.
- *     @type string          $description    When supplied, this description will be shown below the
- *                                           input field when using a default callback function.
- *     @type string          $description_id When supplied, this value will be used for the `id` attribute
- *                                           of the description element. Default is the value of $input_id
- *                                           suffixed with '-description'.
- *     @type bool            $fieldset       Whether to wrap the control in a fieldset and use the title
- *                                           as its `legend`. Default false.
- *     @type callable        $value_callback Callback to retrieve the value. Default is
- *                                           'get_settings_field_option', which calls get_option()
- *                                            based on the $input_name argument.
- *     @type string|callable $before         Can be supplied to generate additional output before the
- *                                           field control. It can be either a string or a callback
- *                                           to generate output. Default null.
- *     @type string|callable $after          Can be supplied to generate additional output after the
- *                                           field control. It can be either a string or a callback
- *                                           to generate output. Default null.
+ *     @type string          $input_id                 The 'id' attribute of the input field. Default is the
+ *                                                     value of $id.
+ *     @type string          $input_name               The `name` attribute of the input field. Default is the
+ *                                                     value of $id.
+ *     @type string          $input_class              CSS class to be added to the input field element when
+ *                                                     it is output. Default empty.
+ *     @type string          $label_for                When supplied, the setting title will be wrapped
+ *                                                     in a `<label>` element, its `for` attribute populated
+ *                                                     with this value. Default is the value of $input_id.
+ *     @type string          $label_class              CSS class to be added to the label field element when
+ *                                                     it is output. Default empty.
+ *     @type string          $class                    CSS class to be added to the `<tr>` element when the
+ *                                                     field is output. Default empty.
+ *     @type string          $description              When supplied, this description will be shown below the
+ *                                                     input field when using a default callback function.
+ *     @type string          $description_id           When supplied, this value will be used for the `id` attribute
+ *                                                     of the description element. Default is the value of $input_id
+ *                                                     suffixed with '-description'.
+ *     @type bool            $fieldset                 Whether to wrap the control in a fieldset and use the title
+ *                                                     as its `legend`. Default true if $callback is either 'radio'
+ *                                                     or 'multibox', otherwise false.
+ *     @type callable        $value_callback           Callback to retrieve the value. Default is
+ *                                                     'get_settings_field_option', which calls get_option()
+ *                                                     based on the $input_name argument.
+ *     @type bool            $skip_title               Whether to not print any field title. This can be useful for
+ *                                                     single checkboxes that have their label printed manually.
+ *                                                     Default false.
+ *     @type bool            $skip_title_screen_reader Whether to hide the field title for screen readers. This can
+ *                                                     be useful if a title should be present for visual purposes,
+ *                                                     but does not convey a meaningful message. Default true if
+ *                                                     $callback is 'checkbox', otherwise false.
+ *     @type string|callable $before                   Can be supplied to generate additional output before the
+ *                                                     field control. It can be either a string or a callback
+ *                                                     to generate output. Default null.
+ *     @type string|callable $after                    Can be supplied to generate additional output after the
+ *                                                     field control. It can be either a string or a callback
+ *                                                     to generate output. Default null.
+ *     @type int|float       $min                      Can be used to set a minimum allowed value if $callback is
+ *                                                     'number'. Default null.
+ *     @type int|float       $max                      Can be used to set a maximum allowed value if $callback is
+ *                                                     'number'. Default null.
+ *     @type int|float       $step                     Can be used to set the numeric step for a field if $callback
+ *                                                     is 'number'. Default null.
+ *     @type int             $rows                     Can be used to set the number of rows if $callback is 'textarea'.
+ *                                                     Default null.
+ *     @type int             $cols                     Can be used to set the number of columns if $callback is
+ *                                                     'textarea'. Default null.
+ *     @type array           $choices                  Array of `$value => $label` pairs to be used as choices if
+ *                                                     $callback is either 'select', 'radio' or 'multibox'. Default
+ *                                                     empty array.
+ *     @type bool            $multiple                 Whether the user should be able to select multiple values if
+ *                                                     $callback is 'select'. Default false.
  * }
  */
 function sae_add_settings_field($id, $title, $callback, $page, $section = 'default', $args = array()) {
@@ -104,16 +130,18 @@ function sae_add_settings_field($id, $title, $callback, $page, $section = 'defau
 	}
 
 	$defaults = array(
-		'input_id'       => $id,
-		'input_name'     => $id,
-		'input_class'    => 'settings-field-control',
-		'label_class'    => '',
-		'class'          => '',
-		'description'    => '',
-		'fieldset'       => false,
-		'value_callback' => 'get_settings_field_option',
-		'before'         => null,
-		'after'          => null,
+		'input_id'                 => $id,
+		'input_name'               => $id,
+		'input_class'              => 'settings-field-control',
+		'label_class'              => '',
+		'class'                    => '',
+		'description'              => '',
+		'fieldset'                 => false,
+		'value_callback'           => 'get_settings_field_option',
+		'skip_title'               => false,
+		'skip_title_screen_reader' => false,
+		'before'                   => null,
+		'after'                    => null,
 	);
 
 	switch ( $callback ) {
