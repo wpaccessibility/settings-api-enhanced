@@ -169,14 +169,23 @@ function render_settings_field_languages_dropdown( $field_args ) {
 		$locale = '';
 	}
 
-	wp_dropdown_languages( array(
-		'name'         => ! empty( $field_args['input_name'] ) ? $field_args['input_name'] : '',
-		'id'           => ! empty( $field_args['input_id'] ) ? $field_args['input_id'] : '',
-		'selected'     => $locale,
-		'languages'    => $languages,
-		'translations' => $translations,
+	$dropdown_args = array(
+		'name'                        => ! empty( $field_args['input_name'] ) ? $field_args['input_name'] : '',
+		'id'                          => ! empty( $field_args['input_id'] ) ? $field_args['input_id'] : '',
+		'selected'                    => $locale,
+		'languages'                   => $languages,
+		'translations'                => $translations,
 		'show_available_translations' => ( ! is_multisite() || is_super_admin() ) && wp_can_install_language_pack(),
-	) );
+	);
+
+	// Ugly hack because `wp_dropdown_languages()` does not support a class.
+	if ( ! empty( $field_args['input_class'] ) ) {
+		ob_start();
+		wp_dropdown_languages( $dropdown_args );
+		echo str_replace( ' id="' . $dropdown_args['id'] . '"', ' id="' . $dropdown_args['id'] . '" class="' . esc_attr( $field_args['input_class'] ) . '"', ob_get_clean() );
+	} else {
+		wp_dropdown_languages( $dropdown_args );
+	}
 }
 
 /**
