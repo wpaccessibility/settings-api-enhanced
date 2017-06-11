@@ -93,10 +93,11 @@ function add_settings_fields_options_writing() {
 		sae_add_settings_section( 'update_services', __( 'Update Services' ), 'settings_section_update_services_before', 'writing' );
 
 		if ( 1 == get_option( 'blog_public' ) ) {
-			$ping_sites_label = __( 'When you publish a new post, WordPress automatically notifies the following site update services. For more about this, see <a href="https://codex.wordpress.org/Update_Services">Update Services</a> on the Codex. Separate multiple service URLs with line breaks.' );
+			$ping_sites_description = __( 'When you publish a new post, WordPress automatically notifies the following site update services. For more about this, see <a href="https://codex.wordpress.org/Update_Services">Update Services</a> on the Codex. Separate multiple service URLs with line breaks.' );
 
-			sae_add_settings_field( 'ping_sites', $ping_sites_label, 'textarea', 'writing', 'update_services', array(
+			sae_add_settings_field( 'ping_sites', __( 'Update service URLs' ), 'textarea', 'writing', 'update_services', array(
 				'input_class' => 'large-text code',
+				'description' => $ping_sites_description,
 				'rows'        => 3,
 			) );
 		}
