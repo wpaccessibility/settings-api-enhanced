@@ -188,3 +188,7 @@ input[type="radio"].settings-field-control + label,
 		font-size: 14px;
 	}
 }
+
+.front-static-pages ul {
+	margin-left: 18px;
+}
