@@ -117,6 +117,10 @@ input[type="radio"].settings-field-control + label,
 	margin: 0.3em 0;
 }
 
+.settings-field .radio-item.radio-item-custom {
+	padding-left: 24px;
+}
+
 .settings-field .radio-item.permalink-structure-radio-item {
 	margin: 20px 0 !important;
 }

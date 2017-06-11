@@ -404,7 +404,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 		'aria-describedby' => $description_id,
 	);
 
-	echo '<span class="radio-item">';
+	echo '<span class="radio-item radio-item-custom">';
 	echo '<label for="' . esc_attr( $text_attrs['id'] ) . '">' . $custom_label . '</label>';
 	echo ' <input' . attrs( $text_attrs, false ) . ' />';
 	echo ' <span class="description" id="' . $description_id . '">' . __( 'Example:' ) . ' <span class="example">' . date_i18n( $current ) . '</span><span class="spinner"></span></span>';
