@@ -16,7 +16,7 @@ See the [Core Trac ticket](https://core.trac.wordpress.org/ticket/39441) for mor
 
 ### Testing the new layout
 
-To test the new layout and markup, visit the Settings > General page in the admin. This is the only page that is currently modified for testing.
+To test the new layout and markup, visit a settings page in the admin. At this point, all settings pages except the Discussion page have been migrated to using the enhanced Settings API.
 
 ### Testing the enhanced Settings API
 
