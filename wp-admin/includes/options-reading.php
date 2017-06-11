@@ -38,17 +38,17 @@ function add_settings_fields_options_reading() {
 
 	sae_add_settings_section( 'blog', __( 'Blog' ), null, 'reading' );
 
-	sae_add_settings_field( 'posts_per_page', __( 'Blog pages show at most' ), 'number', 'reading', 'blog', array(
+	sae_add_settings_field( 'posts_per_page', __( 'Number of posts to show in blog pages' ), 'number', 'reading', 'blog', array(
 		'step' => 1,
 		'min'  => 1,
 	) );
 
-	sae_add_settings_field( 'posts_per_rss', __( 'Syndication feeds show the most recent' ), 'number', 'reading', 'blog', array(
+	sae_add_settings_field( 'posts_per_rss', __( 'Number of most recent items to show in syndication feeds' ), 'number', 'reading', 'blog', array(
 		'step' => 1,
 		'min'  => 1,
 	) );
 
-	sae_add_settings_field( 'rss_use_excerpt', __( 'For each article in a feed, show' ), 'radio', 'reading', 'blog', array(
+	sae_add_settings_field( 'rss_use_excerpt', __( 'Display mode for articles in a feed' ), 'radio', 'reading', 'blog', array(
 		'choices' => array(
 			'0' => __( 'Full text' ),
 			'1' => __( 'Summary' ),
