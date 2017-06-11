@@ -125,7 +125,7 @@ function render_settings_field_permalink_structure( $field_args ) {
 
 	echo '<span class="radio-item permalink-structure-radio-item">';
 	echo '<input' . attrs( $radio_attrs, false ) . checked( $custom, true, false ) . ' />';
-	echo ' <label for="' . $radio_attrs['id'] . '">' . __( 'Custom Structure' ) . '</label><code>' . esc_html( get_option( 'home' ) . $blog_prefix ) . '</code> <input' . attrs( $text_attrs, false ) . ' />';
+	echo ' <label for="' . $radio_attrs['id'] . '">' . __( 'Custom' ) . '</label><label for="' . esc_attr( $text_attrs['id'] ) . '" class="screen-reader-text">' . __( 'Custom structure:' ) . '</label><code>' . esc_html( get_option( 'home' ) . $blog_prefix ) . '</code> <input' . attrs( $text_attrs, false ) . ' />';
 	echo '</span><br />';
 }
 
