@@ -78,11 +78,10 @@ function sae_add_settings_section($id, $title, $callback, $page) {
  *                                                     based on the $input_name argument.
  *     @type bool            $skip_title               Whether to not print any field title. This can be useful for
  *                                                     single checkboxes that have their label printed manually.
- *                                                     Default false.
+ *                                                     Default true if $callback is 'checkbox', otherwise false.
  *     @type bool            $skip_title_screen_reader Whether to hide the field title for screen readers. This can
  *                                                     be useful if a title should be present for visual purposes,
- *                                                     but does not convey a meaningful message. Default true if
- *                                                     $callback is 'checkbox', otherwise false.
+ *                                                     but does not convey a meaningful message. Default false.
  *     @type string|callable $before                   Can be supplied to generate additional output before the
  *                                                     field control. It can be either a string or a callback
  *                                                     to generate output. Default null.
@@ -165,7 +164,7 @@ function sae_add_settings_field($id, $title, $callback, $page, $section = 'defau
 			break;
 		case 'checkbox':
 			$defaults['label'] = $title;
-			$defaults['skip_title_screen_reader'] = true;
+			$defaults['skip_title'] = true;
 			$callback = 'render_settings_field_checkbox';
 			break;
 		case 'select':

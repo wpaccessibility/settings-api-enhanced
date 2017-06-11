@@ -70,7 +70,6 @@ function add_settings_fields_options_reading() {
 		sae_add_settings_section( 'privacy', __( 'Search Engine Visibility' ), null, 'reading' );
 
 		sae_add_settings_field( 'blog_public', '', 'checkbox', 'reading', 'privacy', array(
-			'skip_title'  => true,
 			'label'       => __( 'Discourage search engines from indexing this site' ),
 			'description' => __( 'It is up to search engines to honor this request.' ),
 		) );

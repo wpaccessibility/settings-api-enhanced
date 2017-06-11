@@ -24,7 +24,6 @@ function add_settings_fields_options_media() {
 	) );
 
 	sae_add_settings_field( 'thumbnail_crop', '', 'checkbox', 'media', 'thumbnail_size', array(
-		'skip_title'  => true,
 		'label'       => __( 'Crop thumbnails to exact dimensions' ),
 		'description' => __( 'Normally thumbnails are proportional.' ),
 	) );
@@ -77,8 +76,7 @@ function add_settings_fields_options_media() {
 		}
 
 		sae_add_settings_field( 'uploads_use_yearmonth_folders', '', 'checkbox', 'media', 'uploads', array(
-			'skip_title'  => true,
-			'label'       => __( 'Organize my uploads into month- and year-based folders' ),
+			'label' => __( 'Organize my uploads into month- and year-based folders' ),
 		) );
 	}
 

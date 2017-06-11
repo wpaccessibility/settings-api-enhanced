@@ -50,7 +50,6 @@ function add_settings_fields_options_general() {
 		sae_add_settings_section( 'membership', __( 'Membership' ), null, 'general' );
 
 		sae_add_settings_field( 'users_can_register', '', 'checkbox', 'general', 'membership', array(
-			'skip_title' => true,
 			'label'      => __( 'Anyone can register' ),
 		) );
 

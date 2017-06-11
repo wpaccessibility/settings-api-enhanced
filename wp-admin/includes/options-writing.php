@@ -21,13 +21,11 @@ function add_settings_fields_options_writing() {
 		sae_add_settings_section( 'formatting', __( 'Formatting' ), null, 'writing' );
 
 		sae_add_settings_field( 'use_smilies', '', 'checkbox', 'writing', 'formatting', array(
-			'skip_title'  => true,
-			'label'       => __( 'Convert emoticons like <code>:-)</code> and <code>:-P</code> to graphics on display' ),
+			'label' => __( 'Convert emoticons like <code>:-)</code> and <code>:-P</code> to graphics on display' ),
 		) );
 
 		sae_add_settings_field( 'use_balanceTags', '', 'checkbox', 'writing', 'formatting', array(
-			'skip_title'  => true,
-			'label'       => __( 'WordPress should correct invalidly nested XHTML automatically' ),
+			'label' => __( 'WordPress should correct invalidly nested XHTML automatically' ),
 		) );
 	}
 
