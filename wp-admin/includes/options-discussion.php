@@ -150,7 +150,7 @@ function add_settings_fields_options_discussion() {
 		),
 	) );
 
-	sae_add_settings_field( 'blacklist_keys', __( 'Comment Blacklist' ), 'textarea', 'discussion', 'moderation', array(
+	sae_add_settings_field( 'blacklist_keys', __( 'Comment blacklist' ), 'textarea', 'discussion', 'moderation', array(
 		'rows'        => '10',
 		'cols'        => '50',
 		'input_class' => 'large-text code',

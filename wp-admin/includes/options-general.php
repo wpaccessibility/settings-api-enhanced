@@ -47,13 +47,13 @@ function add_settings_fields_options_general() {
 			'description' => __( 'This address is used for admin purposes, like new user notification.' ),
 		) );
 
-		sae_add_settings_section( 'users', '', null, 'general' );
+		sae_add_settings_section( 'membership', __( 'Membership' ), null, 'general' );
 
-		sae_add_settings_field( 'users_can_register', __( 'Membership' ), 'checkbox', 'general', 'users', array(
-			'label' => __( 'Anyone can register' ),
+		sae_add_settings_field( 'users_can_register', '', 'checkbox', 'general', 'membership', array(
+			'label'      => __( 'Anyone can register' ),
 		) );
 
-		sae_add_settings_field( 'default_role', __( 'New User Default Role' ), 'render_settings_field_roles_dropdown', 'general', 'users' );
+		sae_add_settings_field( 'default_role', __( 'New User Default Role' ), 'render_settings_field_roles_dropdown', 'general', 'membership' );
 	} else {
 		sae_add_settings_section( 'email', '', null, 'general' );
 
@@ -68,7 +68,7 @@ function add_settings_fields_options_general() {
 		) );
 	}
 
-	sae_add_settings_section( 'locale', '', null, 'general' );
+	sae_add_settings_section( 'locale', __( 'Locale' ), null, 'general' );
 
 	$languages = get_available_languages();
 	$translations = wp_get_available_translations();
@@ -168,14 +168,23 @@ function render_settings_field_languages_dropdown( $field_args ) {
 		$locale = '';
 	}
 
-	wp_dropdown_languages( array(
-		'name'         => ! empty( $field_args['input_name'] ) ? $field_args['input_name'] : '',
-		'id'           => ! empty( $field_args['input_id'] ) ? $field_args['input_id'] : '',
-		'selected'     => $locale,
-		'languages'    => $languages,
-		'translations' => $translations,
+	$dropdown_args = array(
+		'name'                        => ! empty( $field_args['input_name'] ) ? $field_args['input_name'] : '',
+		'id'                          => ! empty( $field_args['input_id'] ) ? $field_args['input_id'] : '',
+		'selected'                    => $locale,
+		'languages'                   => $languages,
+		'translations'                => $translations,
 		'show_available_translations' => ( ! is_multisite() || is_super_admin() ) && wp_can_install_language_pack(),
-	) );
+	);
+
+	// Ugly hack because `wp_dropdown_languages()` does not support a class.
+	if ( ! empty( $field_args['input_class'] ) ) {
+		ob_start();
+		wp_dropdown_languages( $dropdown_args );
+		echo str_replace( ' id="' . $dropdown_args['id'] . '"', ' id="' . $dropdown_args['id'] . '" class="' . esc_attr( $field_args['input_class'] ) . '"', ob_get_clean() );
+	} else {
+		wp_dropdown_languages( $dropdown_args );
+	}
 }
 
 /**
@@ -394,7 +403,7 @@ function render_settings_field_datetime_format_radio( $field_args ) {
 		'aria-describedby' => $description_id,
 	);
 
-	echo '<span class="radio-item">';
+	echo '<span class="radio-item radio-item-custom">';
 	echo '<label for="' . esc_attr( $text_attrs['id'] ) . '">' . $custom_label . '</label>';
 	echo ' <input' . attrs( $text_attrs, false ) . ' />';
 	echo ' <span class="description" id="' . $description_id . '">' . __( 'Example:' ) . ' <span class="example">' . date_i18n( $current ) . '</span><span class="spinner"></span></span>';

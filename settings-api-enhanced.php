@@ -34,6 +34,34 @@ function sae_replace_options_general() {
 }
 
 /**
+ * Replaces the Settings > Writing screen with the plugin variant.
+ */
+function sae_replace_options_writing() {
+	global $title, $parent_file, $submenu_file;
+
+	// Ensure submenu item is highlighted correctly.
+	$submenu_file = 'options-writing.php';
+
+	require_once SAE_ABSPATH . 'wp-admin/options-writing.php';
+
+	exit;
+}
+
+/**
+ * Replaces the Settings > Reading screen with the plugin variant.
+ */
+function sae_replace_options_reading() {
+	global $title, $parent_file, $submenu_file;
+
+	// Ensure submenu item is highlighted correctly.
+	$submenu_file = 'options-reading.php';
+
+	require_once SAE_ABSPATH . 'wp-admin/options-reading.php';
+
+	exit;
+}
+
+/**
  * Replaces the Settings > Media screen with the plugin variant.
  */
 function sae_replace_options_media() {
@@ -43,6 +71,20 @@ function sae_replace_options_media() {
 	$submenu_file = 'options-media.php';
 
 	require_once SAE_ABSPATH . 'wp-admin/options-media.php';
+
+	exit;
+}
+
+/**
+ * Replaces the Settings > Permalink screen with the plugin variant.
+ */
+function sae_replace_options_permalink() {
+	global $title, $parent_file, $submenu_file, $is_nginx, $wp_rewrite;
+
+	// Ensure submenu item is highlighted correctly.
+	$submenu_file = 'options-permalink.php';
+
+	require_once SAE_ABSPATH . 'wp-admin/options-permalink.php';
 
 	exit;
 }
@@ -78,7 +120,10 @@ function sae_load() {
 
 	add_action( 'admin_enqueue_scripts', 'sae_enqueue_forms_css' );
 	add_action( 'load-options-general.php', 'sae_replace_options_general' );
+	add_action( 'load-options-writing.php', 'sae_replace_options_writing' );
+	add_action( 'load-options-reading.php', 'sae_replace_options_reading' );
 	add_action( 'load-options-media.php', 'sae_replace_options_media' );
+	add_action( 'load-options-permalink.php', 'sae_replace_options_permalink' );
 	add_action( 'load-options-discussion.php', 'sae_replace_options_discussion' );
 }
 
