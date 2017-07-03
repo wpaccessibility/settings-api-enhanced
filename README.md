@@ -34,3 +34,10 @@ The functions are fully backward-compatible with how they currently work in Word
 ## Goals
 
 The primary goal of these efforts is to make the content produced by the Settings API more accessible by getting rid of the form tables and introducing default accessible callbacks for common fields. Once the markup, layout and styles are final, the idea is to also bring them over to similar areas in the admin.
+
+* make the existing Settings API and the new default callbacks to generate form fields easy to use for developers
+* come up with markup and CSS that works for all admin pages that currently use "form-tables"
+* improve a11y significantly
+* investigate how we can improve general UX
+* start using the Settings API in the core settings pages
+
